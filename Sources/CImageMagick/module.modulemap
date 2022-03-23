@@ -1,24 +1,17 @@
 
-module CImageMagickMacOS [system] {
-    /**
-     ➜  CImageMagick pkg-config --cflags-only-I MagickWand
-     -I/usr/local/Cellar/imagemagick/7.1.0-8/include/ImageMagick-7
-     */
-    header "/usr/local/Cellar/imagemagick/7.1.0-8/include/ImageMagick-7/MagickWand/MagickWand.h"
-    
+module CImageMagick [system] {
     /**
      ➜  CImageMagick pkg-config --libs MagickWand
      -L/usr/local/Cellar/imagemagick/7.1.0-8/lib -lMagickWand-7.Q16HDRI -lMagickCore-7.Q16HDRI
      */
     link "MagickWand-7.Q16HDRI"
     link "MagickCore-7.Q16HDRI"
+    
+    /**
+     ➜  CImageMagick pkg-config --cflags-only-I MagickWand
+     -I/usr/local/Cellar/imagemagick/7.1.0-8/include/ImageMagick-7
+     */
+    umbrella header "shim.h"
     export *
-}
-
-
-module CImageMagickLinux [system] {
-    header "/usr/local/include/ImageMagick-7/MagickWand/MagickWand.h"
-    link "MagickWand-7.Q16HDRI"
-    link "MagickCore-7.Q16HDRI"
-    export *
+    module * { export * }
 }

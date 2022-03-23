@@ -11,6 +11,7 @@ let package = Package(
     targets: [
         .systemLibrary(
             name: "CImageMagick",
+            pkgConfig: "MagickWand",
             providers: [
                 .apt(["imagemagic"]),
                 .brew(["imagemagic"])
